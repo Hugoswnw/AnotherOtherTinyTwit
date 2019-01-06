@@ -9,7 +9,7 @@ Projet réalisé par Adrien Bazoge, Maëlle Brassier, Solène Catella et Hugo Le
 * 1000 followers :
 * 5000 followers :
 
-**Mesures pour extraires les X messages de ces personnes :**
-* X = 10 :
-* X = 50 :
-* X = 100
+**Mesures pour extraires les M messages de ces personnes, lorsque :**
+* M = 10 :
+* M = 50 :
+* M = 100 :
