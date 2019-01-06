@@ -1,4 +1,4 @@
-var prefix = "http://localhost:8080";
+var prefix = "";
 
 var app = angular.module('app', []);
 
