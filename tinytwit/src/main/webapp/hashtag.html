@@ -13,8 +13,9 @@
 </head>
 <body>
     <div class="container">
+      <div ng-app="app" ng-controller="hashtag_ctrl">
+      {{hashtag_fb}}
       <div class="row">
-        <div ng-app="app" ng-controller="hashtag_ctrl">
           <blockquote ng-repeat="x in messages">
             <span class="author">@{{x.author.username}}</span> <span class="date">{{x.postedAt | date : 'd MMM y HH:mm:ss'}}</span> <p ng-bind-html="x.content | hashtag_highlight | to_trusted"></p>
           </blockquote>

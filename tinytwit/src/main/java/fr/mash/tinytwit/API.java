@@ -32,7 +32,7 @@ public class API {
 
     @ApiMethod(name = "user.add", httpMethod = ApiMethod.HttpMethod.POST, path = "user_add")
     public User addUser(@Named("username") String username) throws Exception{
-        if(username == null && username.length() >= 4){
+        if(username == null && username.length() >= 2){
             throw new Exception("Invalid username");
         }
 

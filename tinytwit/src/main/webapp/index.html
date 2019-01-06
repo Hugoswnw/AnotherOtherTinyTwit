@@ -1,57 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Tiny Twit</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="/style/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
-    <script src="/js/params.js"></script>
-    <script src="/js/script.js"></script>
+  <meta charset="UTF-8">
+  <title>Tiny Twit</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/style/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+  <script src="/js/params.js"></script>
+  <script src="/js/script.js"></script>
 </head>
 <body>
   <header>
     <nav>
       <div class="nav-wrapper green accent-3">
         <a href="#" class="brand-logo center">Tiny Twit</a>
-        <ul id="nav-mobile" class="right">
-          <li><a href="#">S'authentifier</a></li>
-        </ul>
       </div>
     </nav>
   </header>
-  <main>
-    <div class="container">
+
+  <div class="container">
+    <div ng-app="app" ng-controller="account_ctrl">
       <div class="row account">
         <div class="col s12 m4 section">
           <div class="input-field">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Pseudo</label>
-          <div class="row">
-            <button class="btn waves-effect waves-light col l6 m8 offset-m2" type="submit" name="login">
-              Se connecter
-            </button>
-            <button class="btn waves-effect waves-light col l6 m8 offset-m2" type="submit" name="login">
-              Charger timeline
-            </button>
-        </div>
-        </div>
+            <i class="material-icons prefix">account_circle</i>
+            <input id="icon_prefix" type="text" class="validate" ng-model="in_username">
+            <label for="icon_prefix">Pseudo</label>
+            <div class="row">
+              <button class="btn waves-effect waves-light col s6" type="submit" name="login" ng-click="login()">
+                Se connecter
+              </button>
+              <p class="s6 center">{{log_mess}}{{username}}</p>
+            </div>
+            <div class="row">
+              <button class="btn waves-effect waves-light col s6" type="submit" name="load_timeline" ng-click="loadTimeline()">
+                Charger timeline
+              </button>
+              <p class="s6 center">{{timeline_fb}}</p>
+            </div>
+          </div>
         </div>
         <div class="col s12 m8">
           <div class="row">
             <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
-              <label for="textarea1">Votre message :</label>
+              <textarea id="textarea1" class="materialize-textarea" ng-model="content"></textarea>
+              <label for="textarea1" >Votre message :</label>
             </div>
           </div>
           <div class="row">
             <div class="col m8">
+              {{tweet_fb}}
             </div>
             <div class="col m4">
-              <button class="btn waves-effect waves-light right" type="submit" name="send">Envoyer
+              <button class="btn waves-effect waves-light right" type="submit" name="send" ng-click="tweet()">Envoyer
                 <i class="material-icons right">send</i>
               </button>
             </div>
@@ -60,13 +63,12 @@
       </div>
 
       <div class="row">
-        <div ng-app="app" ng-controller="timeline_ctrl">
-          <blockquote ng-repeat="x in timeline">
-            <span class="author">@{{x.author.username}}</span> <span class="date">{{x.postedAt | date : 'd MMM y HH:mm:ss'}}</span> <p ng-bind-html="x.content | hashtag_highlight | to_trusted"></p>
-          </blockquote>
+        <blockquote ng-repeat="x in timeline">
+          <span class="author">@{{x.author.username}}</span> <span class="date">{{x.postedAt | date : 'd MMM y HH:mm:ss'}}</span> <p ng-bind-html="x.content | hashtag_highlight | to_trusted"></p>
+        </blockquote>
       </div>
     </div>
-  </main>
+  </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
