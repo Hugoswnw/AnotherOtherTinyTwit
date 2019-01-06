@@ -1,0 +1,12 @@
+.account{
+  padding: 10px 0;
+}
+
+.author{
+  font-weight: bold;
+}
+
+.date{
+  text-decoration: underline;
+  color: #212121;
+}
