@@ -16,6 +16,8 @@ Bob dans leur timeline.
 
 Voici un échantillon des utilisateurs présents : "Calvin", "azwwfmzw", "bvie", "fhyu", "elrhoo", "rbif", "gzpxwgqj", "yltsm", "eeycu", "lintqfq", "wcmy", "ellpsjk", "avayfrk", "xlvpp", "fadpc", "zrqp" ......
 
+Si vous voulez tous les voir, il suffit de lancer la méthode tinytwittsmah.user.get.all
+
 **Mesures pour poster un tweet d'une personne ayant :**
 * 100 followers :
 * 1000 followers :
