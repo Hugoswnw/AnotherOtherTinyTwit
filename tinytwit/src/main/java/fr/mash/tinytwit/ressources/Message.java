@@ -9,6 +9,7 @@ import com.googlecode.objectify.annotation.*;
 import java.util.Date;
 
 @Entity
+@Cache
 public class Message {
 
     @Id

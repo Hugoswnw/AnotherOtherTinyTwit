@@ -92,6 +92,9 @@ public class API {
         if(author==null)
             throw new Exception("Invalid user");
 
+        if(content=="")
+            throw new Exception("Empty content");
+
         Message m = new Message(content, author);
         Key k = ofy().save().entity(m).now();
         ofy().save().entity(new MessageIndex(Key.create(author), k));

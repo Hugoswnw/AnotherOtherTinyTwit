@@ -4,6 +4,7 @@ import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.*;
 
 @Entity
+@Cache
 public class MessageIndex {
 
     @Id
