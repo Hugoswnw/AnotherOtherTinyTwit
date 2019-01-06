@@ -35,9 +35,10 @@
               <p class="s6 center">{{log_mess}}{{username}}</p>
             </div>
             <div class="row">
-              <button class="btn waves-effect waves-light col s6" type="submit" name="load_timeline" ng-click="loadTimeline()">
-                Charger timeline
+              <button class="btn waves-effect waves-light col s4" type="submit" name="load_timeline" ng-click="loadTimeline()">
+                Charger
               </button>
+              <input class="col s2" type="number" name="Number" step="1" min="0" class="validate" ng-model="amount" />
               <p class="s6 center">{{timeline_fb}}</p>
             </div>
           </div>

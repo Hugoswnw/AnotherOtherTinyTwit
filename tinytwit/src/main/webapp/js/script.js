@@ -1,3 +1,5 @@
+var prefix = "http://localhost:8080";
+
 var app = angular.module('app', []);
 
 app.filter('hashtag_highlight', function() {
@@ -23,10 +25,11 @@ app.filter('to_trusted', ['$sce', function($sce){
 
 
 app.controller('account_ctrl', function($scope, $http) {
+  $scope.amount = 10;
   $scope.login = function(){
     $http({
         method : "POST",
-        url : "http://localhost:8080/_ah/api/tinytwitsmah/v1/user_add",
+        url : "/_ah/api/tinytwitsmah/v1/user_add",
         params: {username: $scope.in_username}
     }).then(function mySuccess(response) {
       loadUser();
@@ -39,7 +42,7 @@ app.controller('account_ctrl', function($scope, $http) {
   loadUser = function(){
     $http({
         method : "GET",
-        url : "http://localhost:8080/_ah/api/tinytwitsmah/v1/user_get",
+        url : prefix+"/_ah/api/tinytwitsmah/v1/user_get",
         params: {username: $scope.in_username}
     }).then(function mySuccess(response) {
         $scope.username = response.data.username;
@@ -57,8 +60,8 @@ app.controller('account_ctrl', function($scope, $http) {
     var start = performance.now();
     $http({
         method : "GET",
-        url : "http://localhost:8080/_ah/api/tinytwitsmah/v1/message_get_timeline",
-        params: {username: $scope.username, amount: 10}
+        url : prefix+"/_ah/api/tinytwitsmah/v1/message_get_timeline",
+        params: {username: $scope.username, amount: parseInt($scope.amount)}
     }).then(function mySuccess(response) {
         $scope.timeline = response.data.items;
         $scope.timeline_fb = response.data.items.length+" message(s) en "+Math.floor(performance.now() - start)+"ms";
@@ -72,7 +75,7 @@ app.controller('account_ctrl', function($scope, $http) {
     var start = performance.now();
     $http({
         method : "POST",
-        url : "http://localhost:8080/_ah/api/tinytwitsmah/v1/message_add",
+        url : prefix+"/_ah/api/tinytwitsmah/v1/message_add",
         params: {author: $scope.username, content: $scope.content}
     }).then(function mySuccess(response) {
         $scope.content = "";
@@ -90,7 +93,7 @@ app.controller('hashtag_ctrl', function($scope, $http) {
   var start = performance.now();
   $http({
       method : "GET",
-      url : "http://localhost:8080/_ah/api/tinytwitsmah/v1/hashtag_get_messages",
+      url : prefix+"/_ah/api/tinytwitsmah/v1/hashtag_get_messages",
       params: {word: getUrlParameter("word"), amount: getUrlParameter("amount")}
   }).then(function mySuccess(response) {
       $scope.messages = response.data.items;
