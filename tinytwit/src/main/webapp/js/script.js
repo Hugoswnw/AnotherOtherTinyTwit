@@ -26,10 +26,11 @@ app.filter('to_trusted', ['$sce', function($sce){
 
 app.controller('account_ctrl', function($scope, $http) {
   $scope.amount = 10;
+
   $scope.login = function(){
     $http({
         method : "POST",
-        url : "/_ah/api/tinytwitsmah/v1/user_add",
+        url : prefix+"/_ah/api/tinytwitsmah/v1/user_add",
         params: {username: $scope.in_username}
     }).then(function mySuccess(response) {
       loadUser();
